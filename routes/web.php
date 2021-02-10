@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('laravel', function () {
-    return view('welcome');
-});
 
-Route::view('/','index');
+
+Route::get('index', [MainController::class, 'index']);
+
+Route::fallback(function () {
+    return "Page Not Found";
+});
